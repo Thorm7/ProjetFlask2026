@@ -2,12 +2,12 @@
 
 {% block content %}
     <br>
-    <h2>Nos produits</h2>
+    <h2>Catégorie : {{ categorie }}</h2>
 
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
-                {% for prod in liste_prod %}
+                {% for prod in produits %}
                     <div class="col">
                         <div class="card shadow-sm">
                             <div class="card-body">

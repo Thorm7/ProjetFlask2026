@@ -1,6 +1,28 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <br>
     <h2>Accueil</h2>
-    <button class="btn btn-primary">Bootstrap</button>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
+                {% for cat in liste_cat %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <p class="card-text">
+                            <span class="titre">
+                                <a href="{{ url_for('produits_categorie') }}?type_produit={{ cat[0] }}">
+                                    {{ cat[0] }}
+                                </a>
+                            </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
