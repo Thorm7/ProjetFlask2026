@@ -13,3 +13,18 @@ class Produit(db.Model):
 
     def __repr__(self):
         return f'<Produit {self.nom_produit}>'
+
+from flask_login import UserMixin
+
+class Utilisateur(db.Model, UserMixin):
+    __tablename__ = 'utilisateur'
+
+    id_user = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    mot_de_passe = db.Column(db.String(255), nullable=False)
+    nom = db.Column(db.String(100))
+    prenom = db.Column(db.String(100))
+    role = db.Column(db.String(50), default='user')
+
+    def get_id(self):
+        return str(self.id_user)

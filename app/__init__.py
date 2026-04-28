@@ -20,4 +20,15 @@ pwd = urllib.parse.quote_plus('admin')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:{pwd}@localhost:5432/LivreDVD?client_encoding=utf8'
 db = SQLAlchemy(app)
 
+from flask_login import LoginManager
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'connexion'
+
+@login_manager.user_loader
+def load_user(user_id):
+    from .models import Utilisateur
+    return Utilisateur.query.get(int(user_id))
+
 from app import routes
